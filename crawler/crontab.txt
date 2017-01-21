@@ -1,0 +1,1 @@
+*/30 * * * * /home/test.sh >> /home/test10.log 2>&1
