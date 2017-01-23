@@ -12,7 +12,10 @@ def DisplayTop10(request):
     cur.execute('select name,address,date from top10 group by date order by date desc')
     top10s=cur.fetchall()
     conn.close()
-    return HttpResponse(top10s)
+    return render(request, 'feeds/top10.html',{
+        'top10s': top10s,
+        })
+#return HttpResponse(top10s)
 #return render(request, 'top10.html')
 #result=Top10.objects
 #print Top10.objects
