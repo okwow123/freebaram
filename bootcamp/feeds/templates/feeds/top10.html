@@ -14,16 +14,82 @@
     <div class="col-md-6 col-md-offset-3">
 
       <div class="page-header">
-        <h3>TOP 10 프리바람 홍보 사이트</h3>
+        <h3>다음카페 TOP 10 최신 프리바람 사이트</h3>
       </div>
 
       <div class="panel panel-default panel-feed">
         <div class="panel-body">
 
           <ul class="stream">
-            {% for top10 in top10s %}
-                {{ top10 }}<br>
-            {% endfor %}
+            <table border=1>
+                <tr>
+                    <th>순위</th>
+                    <th>사이트 이름</th>
+                    <th>사이트 주소</th>
+                    <th>오픈 날짜</th>
+                </tr>
+                <tr>
+                <td>1</td>
+                <td>{{top1name}}</td>
+                <td><a href='{{top1addr}}'>click</a></td>
+                <td>{{top1date}}</td>
+                </tr>
+                <tr>
+                <td>2</td>
+                <td>{{top2name}}</td>
+                <td><a href='{{top2addr}}'>click</a></td>
+                <td>{{top2date}}</td>
+                </tr>
+                <tr>
+                <td>3</td>
+                <td>{{top3name}}</td>
+                <td><a href='{{top3addr}}'>click</a></td>
+                <td>{{top3date}}</td>
+                </tr>
+                <tr>
+                <td>4</td>
+                <td>{{top4name}}</td>
+                <td><a href='{{top4addr}}'>click</a></td>
+                <td>{{top4date}}</td>
+                </tr>
+                <tr>
+                <td>5</td>
+                <td>{{top5name}}</td>
+                <td><a href='{{top5addr}}'>click</a></td>
+                <td>{{top5date}}</td>
+                </tr>
+                <tr>
+                <td>6</td>
+                <td>{{top6name}}</td>
+                <td><a href='{{top6addr}}'>click</a></td>
+                <td>{{top6date}}</td>
+                </tr>
+                <tr>
+                <td>7</td>
+                <td>{{top7name}}</td>
+                <td><a href='{{top7addr}}'>click</a></td>
+                <td>{{top7date}}</td>
+                </tr>
+                <tr>
+                <td>8</td>
+                <td>{{top8name}}</td>
+                <td><a href='{{top8addr}}'>click</a></td>
+                <td>{{top8date}}</td>
+                </tr>
+                <tr>
+                <td>9</td>
+                <td>{{top9name}}</td>
+                <td><a href='{{top9addr}}'>click</a></td>
+                <td>{{top9date}}</td>
+                </tr>
+                <tr>
+                <td>10</td>
+                <td>{{top10name}}</td>
+                <td><a href='{{top10addr}}'>click</a></td>
+                <td>{{top10date}}</td>
+                </tr>
+
+            </table>
           </ul>
 
         </div>

@@ -3,21 +3,19 @@ import requests
 import sqlite3
 
 # connction sqlite3
-conn = sqlite3.connect('/home/top10.db')
-c = conn.cursor()
+#conn = sqlite3.connect('/home/top10.db')
+#c = conn.cursor()
 from bs4 import BeautifulSoup
 # 2-array 
-item = [[u'']*3 for x in xrange(20)]
 #start scratch
-url='http://broadcamp.com/bbs/board.php?bo_table=d4?&page=1'+str(1)
+url='http://broadcamp.com/bbs/board.php?bo_table=d4&wr_id=2759'+str(100)
 source_code = requests.get(url)
 plain_text = source_code.text
 soup = BeautifulSoup(plain_text,'lxml')
+index = 0
 print soup
 '''
-index = 0
 for link in soup.select('div > div > a'):
-    #print link
     href=link.get('href')
     if href[0:20]=='http://cafe.daum.net':
         name = soup.find_all("a", class_="link_tit #cafename#result#name")
@@ -35,4 +33,3 @@ for link in soup.select('div > div > a'):
         index+=1
 conn.commit()
 '''
-

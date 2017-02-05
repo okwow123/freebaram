@@ -9,12 +9,10 @@ from bs4 import BeautifulSoup
 # 2-array 
 item = [[u'']*3 for x in xrange(20)]
 #start scratch
-url='http://broadcamp.com/bbs/board.php?bo_table=d4?&page=1'+str(1)
+url='http://top.cafe.daum.net/_c21_/search?search_opt=name&sort_type=recent&q=%ED%94%84%EB%B0%94&search_type=tab'+str(1)
 source_code = requests.get(url)
 plain_text = source_code.text
 soup = BeautifulSoup(plain_text,'lxml')
-print soup
-'''
 index = 0
 for link in soup.select('div > div > a'):
     #print link
@@ -34,5 +32,3 @@ for link in soup.select('div > div > a'):
         c.execute('insert into top10(address,name,date) values (?,?,?)',item[index])
         index+=1
 conn.commit()
-'''
-
