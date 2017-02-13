@@ -9,7 +9,7 @@ import sqlite3
 def DisplayTop10(request):
     conn = sqlite3.connect('/home/top10.db')
     cur = conn.cursor()
-    cur.execute('select name,address,date from top10 group by date order by date desc')
+    cur.execute('select name,address,date from top10 where name not like "%홍보%" group by date order by date desc')
     top10s=cur.fetchall()
     conn.close()
 #print type(top10s[0])

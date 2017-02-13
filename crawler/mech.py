@@ -1,5 +1,6 @@
 # -*- coding: utf8 -*-
 import mechanize
+import datetime
 from bs4 import BeautifulSoup
 import urllib2 
 import cookielib
@@ -10,6 +11,8 @@ conn=sqlite3.connect('/home/top10.db')
 conn.text_factory = lambda x: unicode(x, 'utf-8', 'ignore')
 item = [[u'']*3 for x in xrange(50)]
 index=0
+now=datetime.datetime.now()
+currentmonth=now.strftime("%m")
 #1.go to site with login
 cj = cookielib.CookieJar()
 br = mechanize.Browser()
@@ -61,10 +64,12 @@ for x in range(50):
         item[index][2]=''
     else:
         date_obj=parse(item[index][2])
-        item[index][2]=date_obj.strftime("%Y-%m-%d")
+        item[index][2]=date_obj.strftime("%Y.%m.%d")
+        if (int((item[index][2])[5:7])-int(currentmonth))>=2:
+            item[index][2]=''
     print item[index][2]
     for y in range(len(urls)):
-        if urls[y].find("broadcamp") == -1 and urls[y].find("google") == -1 and urls[y].find("schema") == -1 and  urls[y].find("miwit") == -1 and  urls[y].find("-") == -1 and  urls[y].find("<") == -1 and  urls[y].find("image") == -1 and urls[y] != '' and len(urls[y])>5:
+        if urls[y].find("broadcamp") == -1 and urls[y].find("google") == -1 and urls[y].find("schema") == -1 and  urls[y].find("miwit") == -1 and  urls[y].find("-") == -1 and  urls[y].find("<") == -1 and  urls[y].find("image") == -1 and urls[y] != '' and len(urls[y])>10:
             item[index][0]=urls[y]
             #br.open(urls[y])
             #tttresult=br.response().read()
@@ -72,10 +77,4 @@ for x in range(50):
     conn.execute('insert into top10(address,name,date) values (?,?,?)',item[index])
     index+=1
 conn.commit()
-'''
-for x in range(30):
-    print item[x][0]+' '+item[x][1]+' '+item[x][2]
-'''
-#tresult=re.search('<div id=\"view_content\">[1].split<!--view_content-->[0]',tresult)
-#print tresult.group()
 
